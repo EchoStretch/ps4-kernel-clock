@@ -19,8 +19,10 @@ int _main(struct thread *td) {
   kernel_clock(14861963);
 
   initSysUtil();
-
-  printf_notification("Kernel time changed!");
+  
+  char fw_version[6] = {0};
+  get_firmware_string(fw_version);
+  printf_notification("Kernel time changed!\nPS4 Firmware %s", fw_version);
 
 #ifdef DEBUG_SOCKET
   printf_debug("Closing socket...\n");
